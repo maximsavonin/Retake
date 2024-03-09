@@ -1,0 +1,47 @@
+import yaml
+
+# создание yaml-файла
+yaml_data = """
+task_name: energy
+energy_sources:
+  - name: nuclear
+    cost_per_unit: 0.5
+    capacity: 100
+    schedule:
+      - interval: "00:00-06:00"
+        demand: 20
+      - interval: "06:00-12:00"
+        demand: 50
+      - interval: "12:00-18:00"
+        demand: 80
+      - interval: "18:00-00:00"
+        demand: 30
+  - name: hydro
+    cost_per_unit: 0.4
+    capacity: 80
+    schedule:
+      - interval: "00:00-06:00"
+        demand: 10
+      - interval: "06:00-12:00"
+        demand: 30
+      - interval: "12:00-18:00"
+        demand: 60
+      - interval: "18:00-00:00"
+        demand: 20
+demand_schedule:
+  - interval: "00:00-06:00"
+    demand: 50
+  - interval: "06:00-12:00"
+    demand: 100
+  - interval: "12:00-18:00"
+    demand: 120
+  - interval: "18:00-00:00"
+    demand: 70
+"""
+with open('task.yaml', 'w') as f:
+    f.write(yaml_data)
+
+# считывание и вывод данных для проверки
+with open('task.yaml', 'r') as f:
+    data = yaml.safe_load(f)
+    print(data)
